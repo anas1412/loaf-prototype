@@ -1,0 +1,18 @@
+<script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+
+<title>Todos · Loaf</title>
+
+<h1 class="text-3xl font-bold">Todos <span class="badge"><loaf-count name="todos"></loaf-count></span></h1>
+
+<loaf-form name="todos">
+  <input name="text" placeholder="What needs doing?" required>
+  <button>Add</button>
+</loaf-form>
+
+<loaf-empty name="todos">Nothing to do yet.</loaf-empty>
+
+<loaf-list name="todos">
+  <input toggle="done">
+  <span edit="text"></span>
+  <button remove>✕</button>
+</loaf-list>
