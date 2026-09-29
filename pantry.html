@@ -24,13 +24,13 @@
   </div>
 </section>
 
-<loaf-empty name="pantry" class="rounded-box border border-dashed border-base-300 p-10 text-center text-base-content/60">🫙 Nothing in the pantry yet.</loaf-empty>
+<loaf-empty name="pantry" class="rounded-box border border-dashed border-base-300 p-10 text-center text-base-content/60"><loaf-icon name="archive" class="mb-2 size-10"></loaf-icon><br />Nothing in the pantry yet.</loaf-empty>
 
 <loaf-list name="pantry" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
   <div class="flex flex-col gap-3 rounded-box border-2 bg-base-100 p-5 shadow-sm" :class="item.low ? 'border-warning' : 'border-transparent'">
     <div class="flex items-start justify-between gap-2">
       <h2 class="text-lg font-bold" edit="name"></h2>
-      <span class="badge badge-warning badge-soft" x-show="item.low">Running low</span>
+      <span class="badge badge-warning badge-soft" x-show="item.low"><loaf-icon name="triangle-alert"></loaf-icon> Running low</span>
     </div>
     <p class="text-3xl font-extrabold"><span edit="amount"></span> <span class="text-base font-normal text-base-content/60" field="unit"></span></p>
     <div class="flex items-center justify-between">
@@ -38,7 +38,7 @@
         <input toggle="low" class="toggle toggle-warning toggle-sm" />
         Running low
       </label>
-      <button remove class="btn btn-ghost btn-sm">Remove</button>
+      <button remove class="btn btn-ghost btn-sm"><loaf-icon name="trash-2"></loaf-icon> Remove</button>
     </div>
   </div>
 </loaf-list>

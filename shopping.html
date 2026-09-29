@@ -12,14 +12,14 @@
   <button class="btn btn-primary join-item">Add</button>
 </loaf-form>
 
-<loaf-empty name="shopping" class="rounded-box border border-dashed border-base-300 p-10 text-center text-base-content/60">🛒 Your list is empty. Nice.</loaf-empty>
+<loaf-empty name="shopping" class="rounded-box border border-dashed border-base-300 p-10 text-center text-base-content/60"><loaf-icon name="shopping-cart" class="mb-2 size-10"></loaf-icon><br />Your list is empty. Nice.</loaf-empty>
 
 <loaf-list name="shopping" class="list rounded-box bg-base-100 shadow-sm">
   <div class="list-row items-center">
     <input toggle="bought" class="checkbox checkbox-primary" aria-label="Bought" />
     <div class="list-col-grow text-lg" :class="item.bought && 'line-through opacity-50'"><span edit="item"></span></div>
     <span class="badge badge-ghost">× <span field="qty"></span></span>
-    <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+    <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove"><loaf-icon name="x"></loaf-icon></button>
   </div>
 </loaf-list>
 

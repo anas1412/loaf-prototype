@@ -9,12 +9,12 @@
 
   <!-- The link for the page you're on is highlighted. -->
   <ul class="menu w-full gap-1 text-base" x-data="{ page: location.pathname.split('/').pop() || 'index.html' }">
-    <li><a href="./" :class="page === 'index.html' && 'menu-active'"><span aria-hidden="true">🏠</span> Today</a></li>
-    <li><a href="recipes.html" :class="page === 'recipes.html' && 'menu-active'"><span aria-hidden="true">📖</span> Recipes <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="recipes"></loaf-count></span></a></li>
-    <li><a href="shopping.html" :class="page === 'shopping.html' && 'menu-active'"><span aria-hidden="true">🛒</span> Shopping list <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="shopping"></loaf-count></span></a></li>
-    <li><a href="plan.html" :class="page === 'plan.html' && 'menu-active'"><span aria-hidden="true">📅</span> Meal plan</a></li>
-    <li><a href="pantry.html" :class="page === 'pantry.html' && 'menu-active'"><span aria-hidden="true">🫙</span> Pantry <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="pantry"></loaf-count></span></a></li>
-    <li><a href="about.html" :class="page === 'about.html' && 'menu-active'"><span aria-hidden="true">🍞</span> How it's made</a></li>
+    <li><a href="./" :class="page === 'index.html' && 'menu-active'"><loaf-icon name="house" class="size-5"></loaf-icon> Today</a></li>
+    <li><a href="recipes.html" :class="page === 'recipes.html' && 'menu-active'"><loaf-icon name="book-open" class="size-5"></loaf-icon> Recipes <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="recipes"></loaf-count></span></a></li>
+    <li><a href="shopping.html" :class="page === 'shopping.html' && 'menu-active'"><loaf-icon name="shopping-cart" class="size-5"></loaf-icon> Shopping list <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="shopping"></loaf-count></span></a></li>
+    <li><a href="plan.html" :class="page === 'plan.html' && 'menu-active'"><loaf-icon name="calendar-days" class="size-5"></loaf-icon> Meal plan</a></li>
+    <li><a href="pantry.html" :class="page === 'pantry.html' && 'menu-active'"><loaf-icon name="archive" class="size-5"></loaf-icon> Pantry <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="pantry"></loaf-count></span></a></li>
+    <li><a href="about.html" :class="page === 'about.html' && 'menu-active'"><loaf-icon name="croissant" class="size-5"></loaf-icon> How it's made</a></li>
   </ul>
 
   <div class="mt-auto flex flex-col gap-3 rounded-box bg-base-200 p-4">

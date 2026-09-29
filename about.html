@@ -20,7 +20,7 @@
 &lt;loaf-list name=&quot;shopping&quot;&gt;
   &lt;input toggle=&quot;bought&quot;&gt;
   &lt;span edit=&quot;item&quot;&gt;&lt;/span&gt;
-  &lt;button remove&gt;✕&lt;/button&gt;
+  &lt;button remove&gt;&lt;loaf-icon name="x"&gt;&lt;/loaf-icon&gt;&lt;/button&gt;
 &lt;/loaf-list&gt;</code></pre>
       </div>
     </div>
@@ -59,17 +59,17 @@
 
 <section class="grid gap-6 md:grid-cols-3">
   <div class="rounded-box bg-base-100 p-6 shadow-sm">
-    <p class="text-3xl" aria-hidden="true">🔒</p>
+    <loaf-icon name="lock" class="size-8 text-primary"></loaf-icon>
     <h2 class="mt-2 font-bold">Private by default</h2>
     <p class="mt-1 text-sm text-base-content/70">Your recipes and lists are saved in this browser only. Nobody else can see them.</p>
   </div>
   <div class="rounded-box bg-base-100 p-6 shadow-sm">
-    <p class="text-3xl" aria-hidden="true">🗂️</p>
+    <loaf-icon name="refresh-cw" class="size-8 text-primary"></loaf-icon>
     <h2 class="mt-2 font-bold">Tabs stay in sync</h2>
     <p class="mt-1 text-sm text-base-content/70">Open the shopping list in two tabs and tick something off: the other tab updates too.</p>
   </div>
   <div class="rounded-box bg-base-100 p-6 shadow-sm">
-    <p class="text-3xl" aria-hidden="true">📱</p>
+    <loaf-icon name="smartphone" class="size-8 text-primary"></loaf-icon>
     <h2 class="mt-2 font-bold">Works on your phone</h2>
     <p class="mt-1 text-sm text-base-content/70">Add it to your home screen and take your list to the shop.</p>
   </div>
