@@ -1,0 +1,44 @@
+<script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+<title>Pantry · Loaf Kitchen</title>
+
+<div>
+  <h1 class="text-4xl font-extrabold">Pantry</h1>
+  <p class="mt-1 text-base-content/70">What you have at home. Flag what's running low.</p>
+</div>
+
+<section class="card bg-base-100 shadow-sm">
+  <div class="card-body">
+    <loaf-form name="pantry" class="grid gap-3 sm:grid-cols-[1fr_7rem_8rem_auto]">
+      <input name="name" placeholder="What is it? Flour, rice…" required class="input w-full" aria-label="Item" />
+      <input name="amount" type="number" min="0" step="any" placeholder="Amount" class="input w-full" aria-label="Amount" />
+      <select name="unit" class="select w-full" aria-label="Unit">
+        <option>g</option>
+        <option>kg</option>
+        <option>ml</option>
+        <option>L</option>
+        <option selected>pieces</option>
+        <option>packs</option>
+      </select>
+      <button class="btn btn-primary">Add</button>
+    </loaf-form>
+  </div>
+</section>
+
+<loaf-empty name="pantry" class="rounded-box border border-dashed border-base-300 p-10 text-center text-base-content/60">🫙 Nothing in the pantry yet.</loaf-empty>
+
+<loaf-list name="pantry" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="flex flex-col gap-3 rounded-box border-2 bg-base-100 p-5 shadow-sm" :class="item.low ? 'border-warning' : 'border-transparent'">
+    <div class="flex items-start justify-between gap-2">
+      <h2 class="text-lg font-bold" edit="name"></h2>
+      <span class="badge badge-warning badge-soft" x-show="item.low">Running low</span>
+    </div>
+    <p class="text-3xl font-extrabold"><span edit="amount"></span> <span class="text-base font-normal text-base-content/60" field="unit"></span></p>
+    <div class="flex items-center justify-between">
+      <label class="label cursor-pointer gap-2 text-sm">
+        <input toggle="low" class="toggle toggle-warning toggle-sm" />
+        Running low
+      </label>
+      <button remove class="btn btn-ghost btn-sm">Remove</button>
+    </div>
+  </div>
+</loaf-list>

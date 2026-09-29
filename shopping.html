@@ -1,0 +1,26 @@
+<script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+<title>Shopping list · Loaf Kitchen</title>
+
+<div>
+  <h1 class="text-4xl font-extrabold">Shopping list</h1>
+  <p class="mt-1 text-base-content/70"><loaf-count name="shopping"></loaf-count> things to buy. Tick them off in the shop.</p>
+</div>
+
+<loaf-form name="shopping" class="join w-full">
+  <input name="item" placeholder="Add an item, like flour" required class="input join-item w-full" aria-label="Item" />
+  <input name="qty" type="number" min="1" value="1" class="input join-item w-24" aria-label="How many" />
+  <button class="btn btn-primary join-item">Add</button>
+</loaf-form>
+
+<loaf-empty name="shopping" class="rounded-box border border-dashed border-base-300 p-10 text-center text-base-content/60">🛒 Your list is empty. Nice.</loaf-empty>
+
+<loaf-list name="shopping" class="list rounded-box bg-base-100 shadow-sm">
+  <div class="list-row items-center">
+    <input toggle="bought" class="checkbox checkbox-primary" aria-label="Bought" />
+    <div class="list-col-grow text-lg" :class="item.bought && 'line-through opacity-50'"><span edit="item"></span></div>
+    <span class="badge badge-ghost">× <span field="qty"></span></span>
+    <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+  </div>
+</loaf-list>
+
+<p class="text-sm text-base-content/60">Tip: click an item's name to change it.</p>

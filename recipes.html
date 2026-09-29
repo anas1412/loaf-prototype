@@ -1,0 +1,92 @@
+<script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+<title>Recipes · Loaf Kitchen</title>
+
+<div>
+  <h1 class="text-4xl font-extrabold">Recipes</h1>
+  <p class="mt-1 text-base-content/70">Your recipe box. <loaf-count name="recipes"></loaf-count> saved so far.</p>
+</div>
+
+<div class="grid items-start gap-6 lg:grid-cols-[20rem_1fr]">
+  <!-- Add a recipe -->
+  <section class="card bg-base-100 shadow-sm lg:sticky lg:top-8">
+    <div class="card-body">
+      <h2 class="card-title">Add a recipe</h2>
+      <loaf-form name="recipes" class="flex flex-col gap-3">
+        <label class="floating-label">
+          <span>Name</span>
+          <input name="name" placeholder="Name" required class="input w-full" />
+        </label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="floating-label">
+            <span>Minutes</span>
+            <input name="minutes" type="number" min="1" placeholder="Minutes" class="input w-full" />
+          </label>
+          <label class="floating-label">
+            <span>Serves</span>
+            <input name="serves" type="number" min="1" placeholder="Serves" class="input w-full" />
+          </label>
+        </div>
+        <label class="floating-label">
+          <span>Kind</span>
+          <select name="category" class="select w-full">
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option selected>Dinner</option>
+            <option>Dessert</option>
+            <option>Bread</option>
+          </select>
+        </label>
+        <textarea name="notes" rows="5" placeholder="Ingredients and steps" class="textarea w-full"></textarea>
+        <label class="label cursor-pointer gap-3">
+          <input name="favorite" type="checkbox" class="toggle toggle-primary toggle-sm" />
+          Favorite
+        </label>
+        <button class="btn btn-primary">Save recipe</button>
+      </loaf-form>
+    </div>
+  </section>
+
+  <!-- Search and the recipe cards -->
+  <section class="flex flex-col gap-4" x-data="{ search: '', favoritesOnly: false }">
+    <div class="flex flex-wrap items-center gap-3">
+      <label class="input grow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7" /><path stroke-linecap="round" d="m20 20-3.5-3.5" /></svg>
+        <input x-model="search" type="search" placeholder="Search recipes" aria-label="Search recipes" />
+      </label>
+      <label class="label cursor-pointer gap-2">
+        <input x-model="favoritesOnly" type="checkbox" class="toggle toggle-sm" />
+        Favorites only
+      </label>
+    </div>
+
+    <loaf-empty name="recipes" class="rounded-box border border-dashed border-base-300 p-10 text-center text-base-content/60">Your recipe box is empty. Add a recipe on the left.</loaf-empty>
+
+    <loaf-list name="recipes" class="grid gap-4 xl:grid-cols-2">
+      <article
+        class="card border bg-base-100 shadow-sm"
+        :class="item.favorite ? 'border-primary' : 'border-transparent'"
+        x-show="(!favoritesOnly || item.favorite) && (item.name + ' ' + (item.notes ?? '') + ' ' + item.category).toLowerCase().includes(search.toLowerCase())"
+      >
+        <div class="card-body gap-3">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="card-title text-xl" edit="name"></h3>
+            <label class="label shrink-0 cursor-pointer gap-2 text-sm" title="Favorite">
+              <input toggle="favorite" class="toggle toggle-primary toggle-sm" aria-label="Favorite" />
+              ★
+            </label>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge badge-primary badge-soft" field="category"></span>
+            <span class="badge badge-ghost" x-show="item.minutes">⏱ <span field="minutes"></span> min</span>
+            <span class="badge badge-ghost" x-show="item.serves">🍽 serves <span field="serves"></span></span>
+          </div>
+          <p class="whitespace-pre-line text-sm text-base-content/80" edit="notes" x-show="item.notes"></p>
+          <div class="card-actions items-center justify-between">
+            <span class="text-xs text-base-content/50">Added <span field="created_at"></span></span>
+            <button remove class="btn btn-ghost btn-sm">Delete</button>
+          </div>
+        </div>
+      </article>
+    </loaf-list>
+  </section>
+</div>

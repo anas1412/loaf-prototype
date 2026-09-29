@@ -1,15 +1,54 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="loaf">
   <head>
-    <title>Loaf</title>
+    <title>Loaf Kitchen</title>
+    <meta name="description" content="A home cooking companion: recipes, a shopping list, a weekly meal plan and a pantry. Built with Loaf." />
     <link rel="icon" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
+    <style>
+      /* Loaf Kitchen's own daisyUI theme. The theme menu offers the 35 built-in ones too. */
+      [data-theme="loaf"] {
+        color-scheme: dark;
+        --color-base-100: #2a1f18;
+        --color-base-200: #1e1612;
+        --color-base-300: #3a2c22;
+        --color-base-content: #f7f0e6;
+        --color-primary: #d9913b;
+        --color-primary-content: #1e1612;
+        --color-secondary: #f2d07a;
+        --color-secondary-content: #1e1612;
+        --color-accent: #a8c686;
+        --color-accent-content: #1e1612;
+        --color-neutral: #3a2c22;
+        --color-neutral-content: #f7f0e6;
+        --color-info: #7fb2d9;
+        --color-success: #8fbf7a;
+        --color-warning: #e8b04b;
+        --color-error: #e07a5f;
+        --radius-selector: 0.5rem;
+        --radius-field: 0.5rem;
+        --radius-box: 0.9rem;
+      }
+      body { font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif; }
+    </style>
   </head>
-  <body class="flex min-h-screen flex-col bg-base-200">
-    <loaf-include src="_header.html"></loaf-include>
-    <!-- Each page goes here, in a centered column. -->
-    <main class="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-4 p-6">
-      <loaf-page></loaf-page>
-    </main>
-    <loaf-include src="_footer.html"></loaf-include>
+  <body class="bg-base-200">
+    <div class="drawer lg:drawer-open">
+      <input id="nav" type="checkbox" class="drawer-toggle" aria-label="Open the menu" />
+      <div class="drawer-content flex min-h-screen flex-col">
+        <loaf-include src="_topbar.html"></loaf-include>
+        <!-- Each page goes here. -->
+        <main class="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 p-4 sm:p-8">
+          <loaf-page></loaf-page>
+        </main>
+        <loaf-include src="_footer.html"></loaf-include>
+      </div>
+      <div class="drawer-side z-40">
+        <label for="nav" aria-label="Close the menu" class="drawer-overlay"></label>
+        <loaf-include src="_sidebar.html"></loaf-include>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,109 @@
+<script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+<title>Meal plan · Loaf Kitchen</title>
+
+<div>
+  <h1 class="text-4xl font-extrabold">Meal plan</h1>
+  <p class="mt-1 text-base-content/70">Plan your week. Today's meals also show on the <a href="./" class="link link-primary">Today</a> page.</p>
+</div>
+
+<!-- One tab per day, each with its own list: plan-monday, plan-tuesday… Today's tab opens first. -->
+<div class="tabs tabs-box bg-base-200 p-1" x-data x-init="$el.querySelectorAll('.tab')[(new Date().getDay() + 6) % 7].checked = true">
+  <input type="radio" name="day" class="tab" aria-label="Mon" />
+  <div class="tab-content rounded-box bg-base-100 p-6">
+    <h2 class="text-2xl font-bold">Monday</h2>
+    <loaf-form name="plan-monday" class="join mt-4 w-full">
+      <input name="meal" placeholder="What's for Monday?" required class="input join-item w-full" aria-label="Meal for Monday" />
+      <button class="btn btn-primary join-item">Add</button>
+    </loaf-form>
+    <loaf-empty name="plan-monday" class="mt-4 text-base-content/60">Nothing planned yet.</loaf-empty>
+    <loaf-list name="plan-monday" class="mt-4">
+      <span aria-hidden="true">🍽️</span>
+      <span edit="meal"></span>
+      <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+    </loaf-list>
+  </div>
+  <input type="radio" name="day" class="tab" aria-label="Tue" />
+  <div class="tab-content rounded-box bg-base-100 p-6">
+    <h2 class="text-2xl font-bold">Tuesday</h2>
+    <loaf-form name="plan-tuesday" class="join mt-4 w-full">
+      <input name="meal" placeholder="What's for Tuesday?" required class="input join-item w-full" aria-label="Meal for Tuesday" />
+      <button class="btn btn-primary join-item">Add</button>
+    </loaf-form>
+    <loaf-empty name="plan-tuesday" class="mt-4 text-base-content/60">Nothing planned yet.</loaf-empty>
+    <loaf-list name="plan-tuesday" class="mt-4">
+      <span aria-hidden="true">🍽️</span>
+      <span edit="meal"></span>
+      <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+    </loaf-list>
+  </div>
+  <input type="radio" name="day" class="tab" aria-label="Wed" />
+  <div class="tab-content rounded-box bg-base-100 p-6">
+    <h2 class="text-2xl font-bold">Wednesday</h2>
+    <loaf-form name="plan-wednesday" class="join mt-4 w-full">
+      <input name="meal" placeholder="What's for Wednesday?" required class="input join-item w-full" aria-label="Meal for Wednesday" />
+      <button class="btn btn-primary join-item">Add</button>
+    </loaf-form>
+    <loaf-empty name="plan-wednesday" class="mt-4 text-base-content/60">Nothing planned yet.</loaf-empty>
+    <loaf-list name="plan-wednesday" class="mt-4">
+      <span aria-hidden="true">🍽️</span>
+      <span edit="meal"></span>
+      <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+    </loaf-list>
+  </div>
+  <input type="radio" name="day" class="tab" aria-label="Thu" />
+  <div class="tab-content rounded-box bg-base-100 p-6">
+    <h2 class="text-2xl font-bold">Thursday</h2>
+    <loaf-form name="plan-thursday" class="join mt-4 w-full">
+      <input name="meal" placeholder="What's for Thursday?" required class="input join-item w-full" aria-label="Meal for Thursday" />
+      <button class="btn btn-primary join-item">Add</button>
+    </loaf-form>
+    <loaf-empty name="plan-thursday" class="mt-4 text-base-content/60">Nothing planned yet.</loaf-empty>
+    <loaf-list name="plan-thursday" class="mt-4">
+      <span aria-hidden="true">🍽️</span>
+      <span edit="meal"></span>
+      <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+    </loaf-list>
+  </div>
+  <input type="radio" name="day" class="tab" aria-label="Fri" />
+  <div class="tab-content rounded-box bg-base-100 p-6">
+    <h2 class="text-2xl font-bold">Friday</h2>
+    <loaf-form name="plan-friday" class="join mt-4 w-full">
+      <input name="meal" placeholder="What's for Friday?" required class="input join-item w-full" aria-label="Meal for Friday" />
+      <button class="btn btn-primary join-item">Add</button>
+    </loaf-form>
+    <loaf-empty name="plan-friday" class="mt-4 text-base-content/60">Nothing planned yet.</loaf-empty>
+    <loaf-list name="plan-friday" class="mt-4">
+      <span aria-hidden="true">🍽️</span>
+      <span edit="meal"></span>
+      <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+    </loaf-list>
+  </div>
+  <input type="radio" name="day" class="tab" aria-label="Sat" />
+  <div class="tab-content rounded-box bg-base-100 p-6">
+    <h2 class="text-2xl font-bold">Saturday</h2>
+    <loaf-form name="plan-saturday" class="join mt-4 w-full">
+      <input name="meal" placeholder="What's for Saturday?" required class="input join-item w-full" aria-label="Meal for Saturday" />
+      <button class="btn btn-primary join-item">Add</button>
+    </loaf-form>
+    <loaf-empty name="plan-saturday" class="mt-4 text-base-content/60">Nothing planned yet.</loaf-empty>
+    <loaf-list name="plan-saturday" class="mt-4">
+      <span aria-hidden="true">🍽️</span>
+      <span edit="meal"></span>
+      <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+    </loaf-list>
+  </div>
+  <input type="radio" name="day" class="tab" aria-label="Sun" />
+  <div class="tab-content rounded-box bg-base-100 p-6">
+    <h2 class="text-2xl font-bold">Sunday</h2>
+    <loaf-form name="plan-sunday" class="join mt-4 w-full">
+      <input name="meal" placeholder="What's for Sunday?" required class="input join-item w-full" aria-label="Meal for Sunday" />
+      <button class="btn btn-primary join-item">Add</button>
+    </loaf-form>
+    <loaf-empty name="plan-sunday" class="mt-4 text-base-content/60">Nothing planned yet.</loaf-empty>
+    <loaf-list name="plan-sunday" class="mt-4">
+      <span aria-hidden="true">🍽️</span>
+      <span edit="meal"></span>
+      <button remove class="btn btn-ghost btn-square btn-sm" aria-label="Remove">✕</button>
+    </loaf-list>
+  </div>
+</div>

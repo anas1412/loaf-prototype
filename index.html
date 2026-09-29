@@ -1,6 +1,77 @@
 <script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+<title>Today · Loaf Kitchen</title>
 
-<div class="py-16 text-center">
-  <h1 class="text-4xl font-bold">Loaf is running</h1>
-  <p class="mt-3">Edit <code class="kbd kbd-sm">index.html</code> to get started.</p>
+<!-- Greeting -->
+<section class="rounded-box bg-base-100 p-6 shadow-sm sm:p-8" x-data="{ hour: new Date().getHours() }">
+  <p class="text-sm text-base-content/60" x-text="new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })"></p>
+  <h1 class="mt-1 text-4xl font-extrabold sm:text-5xl" x-text="hour < 12 ? 'Good morning.' : hour < 18 ? 'Good afternoon.' : 'Good evening.'">Hello.</h1>
+  <p class="mt-3 max-w-xl text-lg text-base-content/70">What's cooking today? Plan your meals, keep a shopping list and never lose a recipe again.</p>
+</section>
+
+<!-- At a glance -->
+<div class="stats stats-vertical w-full bg-base-100 shadow-sm sm:stats-horizontal">
+  <a href="recipes.html" class="stat">
+    <div class="stat-title">Recipes</div>
+    <div class="stat-value text-primary"><loaf-count name="recipes"></loaf-count></div>
+    <div class="stat-desc">in your recipe box</div>
+  </a>
+  <a href="shopping.html" class="stat">
+    <div class="stat-title">Shopping list</div>
+    <div class="stat-value text-secondary"><loaf-count name="shopping"></loaf-count></div>
+    <div class="stat-desc">things to buy</div>
+  </a>
+  <a href="pantry.html" class="stat">
+    <div class="stat-title">Pantry</div>
+    <div class="stat-value text-accent"><loaf-count name="pantry"></loaf-count></div>
+    <div class="stat-desc">items at home</div>
+  </a>
 </div>
+
+<div class="grid gap-6 lg:grid-cols-2">
+  <!-- Today's meals come from the meal plan: plan-monday, plan-tuesday… -->
+  <section class="card bg-base-100 shadow-sm" x-data="{ day: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][new Date().getDay()] }">
+    <div class="card-body">
+      <h2 class="card-title">On the menu today</h2>
+      <div x-data="collection('plan-' + day)">
+        <p x-show="!loading && !items.length" class="text-base-content/60">Nothing planned. <a href="plan.html" class="link link-primary">Plan your week</a></p>
+        <ul class="mt-2 flex flex-col gap-2">
+          <template x-for="meal in items" :key="meal.id">
+            <li class="flex items-center gap-3 rounded-box bg-base-200 px-4 py-3"><span aria-hidden="true">🍽️</span><span x-text="meal.meal"></span></li>
+          </template>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick add goes straight into the shopping list. -->
+  <section class="card bg-base-100 shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title">Ran out of something?</h2>
+      <p class="text-base-content/70">Add it to your shopping list.</p>
+      <loaf-form name="shopping" class="join mt-2 w-full">
+        <input name="item" placeholder="Butter, eggs, yeast…" required class="input join-item w-full" aria-label="Item" />
+        <input name="qty" type="number" min="1" value="1" class="input join-item w-20" aria-label="How many" />
+        <button class="btn btn-primary join-item">Add</button>
+      </loaf-form>
+      <a href="shopping.html" class="link link-primary mt-2 text-sm">See the whole list</a>
+    </div>
+  </section>
+</div>
+
+<!-- Starred recipes -->
+<section class="flex flex-col gap-4">
+  <div class="flex items-end justify-between gap-4">
+    <h2 class="text-2xl font-bold">Favorites</h2>
+    <a href="recipes.html" class="link link-primary text-sm">All recipes</a>
+  </div>
+  <loaf-empty name="recipes" class="rounded-box border border-dashed border-base-300 p-8 text-center text-base-content/60">No recipes yet. <a href="recipes.html" class="link link-primary">Add your first one</a>, then star it to see it here.</loaf-empty>
+  <loaf-list name="recipes" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <a href="recipes.html" class="card bg-base-100 shadow-sm transition hover:-translate-y-0.5" x-show="item.favorite">
+      <div class="card-body gap-1">
+        <span class="badge badge-primary badge-soft badge-sm" field="category"></span>
+        <h3 class="card-title" field="name"></h3>
+        <p class="text-sm text-base-content/60" x-show="item.minutes"><span field="minutes"></span> minutes</p>
+      </div>
+    </a>
+  </loaf-list>
+</section>

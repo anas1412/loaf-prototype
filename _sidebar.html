@@ -1,0 +1,25 @@
+<aside class="flex min-h-full w-72 flex-col gap-2 bg-base-100 p-4">
+  <a href="./" class="flex items-center gap-3 rounded-box px-3 py-2">
+    <img src="logo.svg" alt="" class="size-10" />
+    <div>
+      <p class="text-lg font-bold leading-tight">Loaf Kitchen</p>
+      <p class="text-xs text-base-content/60">Your cooking companion</p>
+    </div>
+  </a>
+
+  <!-- The link for the page you're on is highlighted. -->
+  <ul class="menu w-full gap-1 text-base" x-data="{ page: location.pathname.split('/').pop() || 'index.html' }">
+    <li><a href="./" :class="page === 'index.html' && 'menu-active'"><span aria-hidden="true">🏠</span> Today</a></li>
+    <li><a href="recipes.html" :class="page === 'recipes.html' && 'menu-active'"><span aria-hidden="true">📖</span> Recipes <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="recipes"></loaf-count></span></a></li>
+    <li><a href="shopping.html" :class="page === 'shopping.html' && 'menu-active'"><span aria-hidden="true">🛒</span> Shopping list <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="shopping"></loaf-count></span></a></li>
+    <li><a href="plan.html" :class="page === 'plan.html' && 'menu-active'"><span aria-hidden="true">📅</span> Meal plan</a></li>
+    <li><a href="pantry.html" :class="page === 'pantry.html' && 'menu-active'"><span aria-hidden="true">🫙</span> Pantry <span class="badge badge-sm badge-ghost ml-auto"><loaf-count name="pantry"></loaf-count></span></a></li>
+    <li><a href="about.html" :class="page === 'about.html' && 'menu-active'"><span aria-hidden="true">🍞</span> How it's made</a></li>
+  </ul>
+
+  <div class="mt-auto flex flex-col gap-3 rounded-box bg-base-200 p-4">
+    <label class="text-sm font-semibold" for="theme">Look</label>
+    <loaf-theme id="theme" class="select select-sm w-full"></loaf-theme>
+    <p class="text-xs text-base-content/60">Everything you save stays in this browser.</p>
+  </div>
+</aside>
