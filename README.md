@@ -11,7 +11,7 @@
 Every page is a plain HTML file that starts with one line:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.3/loaf.js"></script>
 ```
 
 | Page | Loaf features |

@@ -12,7 +12,7 @@ A Loaf site is a folder of HTML files. Each page starts with one script tag that
 - **Static only.** No server code, no npm packages, no build step, no bundlers, no `tailwind.config.js`, no `@plugin` / `@utility` / `@import "tailwindcss"` CSS. Everything must work when the folder is served by GitHub Pages.
 - **Every page's first line** is the Loaf script. Don't add Tailwind, daisyUI or Alpine yourself; Loaf loads them.
   ```html
-  <script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.3/loaf.js"></script>
   ```
 - **Audience:** many Loaf users aren't programmers. Write pages with `loaf-` elements and daisyUI classes, and keep Alpine out of pages unless it's needed.
 - Prefer the simplest layer that works: plain HTML + daisyUI, then `loaf-` elements, then Alpine with `collection()`.
@@ -37,7 +37,7 @@ loaf.js           the library source (only in the Loaf repo itself)
 
 - **A page is a fragment**: the script line, a `<title>`, then content. No `<html>`, `<head>`, `<body>`, `<main>`, navbar or footer; the layout puts the page in a centered `<main>` column (`max-w-3xl`, `gap-4`).
   ```html
-  <script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.2/loaf.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/anas1412/loaf@0.3/loaf.js"></script>
   <title>About · My site</title>
 
   <h1 class="text-3xl font-bold">About</h1>
@@ -78,6 +78,7 @@ loaf.js           the library source (only in the Loaf repo itself)
   - Any Alpine attribute can use `item`, e.g. `:class="item.done && 'line-through'"`.
 - `<loaf-count name>` shows the number of records; `<loaf-empty name>` shows only when there are none.
 - `<loaf-theme>` is the theme menu (a daisyUI `select`).
+- `<loaf-icon name="house"></loaf-icon>` shows a [Lucide](https://lucide.dev/icons) icon (kebab-case names like `shopping-cart`, `trash-2`, `chef-hat`), 1em big in `currentColor`. Size it with Tailwind (`size-5`), color it with text classes (`text-primary`). It's decorative (`aria-hidden`) unless it has `label="…"`; icon-only buttons need either a `label` or an `aria-label` on the button. Use icons, not emoji, for UI.
 - **Default styling:** an element without a `class` gets daisyUI's look: form inputs `input grow`, textareas `textarea w-full`, selects `select`, buttons `btn btn-primary`, the form `flex flex-wrap items-center gap-2`, the list `flex flex-col gap-3`, each list item `rounded-box bg-base-100 p-4 shadow-sm` (several children are wrapped in a row: `flex items-center gap-3 rounded-box bg-base-100 p-4 shadow-sm`, and their unstyled `field`/`edit` children get `grow`), `remove` buttons `btn btn-ghost btn-sm`, `toggle` inputs `checkbox`. Adding any `class` replaces the default for that element.
 - Elements are converted when Alpine starts, so they must be in the page, layout or includes. Don't create them later with JavaScript.
 
@@ -112,4 +113,4 @@ Themes: `<loaf-theme></loaf-theme>` lists the 35 built-in themes and remembers e
 ## Hosting and updating
 
 - GitHub Pages: Settings → Pages → deploy from `main`. Keep `.nojekyll`. Netlify and Cloudflare Pages also work with no settings.
-- `@0.2` in the script URL follows every 0.2.x release. To move to a new minor version, change the number on every page.
+- `@0.3` in the script URL follows every 0.3.x release, which are fixes only. New features ship in a new minor version (0.4): change the number on every page to use them. Browsers cache the `@0.3` file for up to a week, so never rely on a feature from a newer patch.
